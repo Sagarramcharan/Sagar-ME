@@ -28,19 +28,19 @@ export default function Contact() {
               <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center flex-shrink-0">
                 <Mail className="w-5 h-5 text-blue-400" />
               </div>
-              <span className="text-lg">hello@example.com</span>
+              <span className="text-lg">sagarsatapathy24@gmail.com</span>
             </div>
             <div className="flex items-center space-x-4 text-slate-300">
               <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center flex-shrink-0">
                 <Phone className="w-5 h-5 text-green-400" />
               </div>
-              <span className="text-lg">+1 (555) 123-4567</span>
+              <span className="text-lg">8688887665</span>
             </div>
             <div className="flex items-center space-x-4 text-slate-300">
               <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center flex-shrink-0">
                 <MapPin className="w-5 h-5 text-red-400" />
               </div>
-              <span className="text-lg">San Francisco, CA</span>
+              <span className="text-lg">HYDERABAD TELANGANA</span>
             </div>
           </div>
         </div>

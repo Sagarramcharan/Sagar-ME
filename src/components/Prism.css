@@ -1,0 +1,15 @@
+.prism-container {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  background-color: #050510;
+}
+
+.prism-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+}

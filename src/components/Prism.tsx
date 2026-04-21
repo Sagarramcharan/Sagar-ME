@@ -1,5 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { Renderer, Camera, Transform, Program, Mesh, Triangle } from 'ogl';
+import './Prism.css';
 
 // A simple WebGL prism-like abstract background using OGL
 const vertex = `

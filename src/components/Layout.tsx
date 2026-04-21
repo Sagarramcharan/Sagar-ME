@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import BubbleMenu from './BubbleMenu';
 import Footer from './Footer';

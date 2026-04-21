@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Menu Pure HTML/CSS/JS</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        :root {
+            --menu-bg: #fff;
+            --menu-content-color: #111;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            font-family: sans-serif;
+        }
+
+        .bubble-menu {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 0 32px;
+            pointer-events: none;
+            z-index: 1001;
+        }
+
+        .bubble {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            background: var(--menu-bg);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            pointer-events: auto;
+            will-change: transform;
+        }
+
+        .logo-bubble {
+            height: 56px;
+            padding: 0 32px;
+            gap: 8px;
+        }
+
+        .logo-content {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 120px;
+            height: 100%;
+        }
+
+        .menu-btn {
+            width: 56px;
+            height: 56px;
+            border: 0;
+            cursor: pointer;
+            padding: 0;
+            flex-direction: column;
+        }
+
+        .menu-line {
+            display: block;
+            margin: 0 auto;
+            border-radius: 2px;
+            width: 26px;
+            height: 2px;
+            background: var(--menu-content-color);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            transform-origin: center;
+        }
+
+        .menu-line.short {
+            margin-top: 6px;
+        }
+
+        .menu-btn.open .menu-line:first-child {
+            transform: translateY(4px) rotate(45deg);
+        }
+
+        .menu-btn.open .menu-line.short {
+            transform: translateY(-4px) rotate(-45deg);
+        }
+
+        .bubble-menu-items {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .pill-list {
+            list-style: none;
+            margin: 0;
+            padding: 0 24px;
+            width: 100%;
+            max-width: 1600px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 0;
+            pointer-events: auto;
+        }
+
+        .pill-col {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            flex: 0 0 calc(100% / 3);
+            box-sizing: border-box;
+        }
+
+        .pill-link {
+            width: 100%;
+            border-radius: 999px;
+            text-decoration: none;
+            background: var(--menu-bg);
+            color: var(--menu-content-color);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.10);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: background 0.3s ease, color 0.3s ease;
+            box-sizing: border-box;
+            white-space: nowrap;
+            overflow: hidden;
+            min-height: 160px;
+            padding: clamp(1.5rem, 3vw, 8rem) 0;
+            font-size: clamp(1.5rem, 4vw, 4rem);
+            font-weight: 400;
+            will-change: transform;
+            transform: rotate(var(--item-rot));
+        }
+
+        .pill-link:hover {
+            transform: rotate(var(--item-rot)) scale(1.06);
+            background: var(--hover-bg) !important;
+            color: var(--hover-color) !important;
+        }
+
+        .pill-link:active {
+            transform: rotate(var(--item-rot)) scale(0.94);
+        }
+
+        .pill-label {
+            display: inline-block;
+            will-change: transform, opacity;
+            height: 1.2em;
+            line-height: 1.2;
+        }
+
+        @media (max-width: 899px) {
+            .bubble-menu-items {
+                padding-top: 120px;
+                align-items: flex-start;
+            }
+
+            .pill-list {
+                row-gap: 16px;
+            }
+
+            .pill-col {
+                flex: 0 0 100% !important;
+            }
+
+            .pill-link {
+                transform: none !important;
+                font-size: clamp(1.2rem, 3vw, 4rem);
+                padding: clamp(1rem, 2vw, 2rem) 0;
+                min-height: 80px !important;
+            }
+
+            .pill-link:hover {
+                transform: scale(1.06) !important;
+            }
+
+            .pill-link:active {
+                transform: scale(0.94) !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="bubble-menu">
+        <div class="bubble logo-bubble">
+            <span class="logo-content">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div
+                        style="width: 32px; height: 32px; background: #2563eb; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 18px; box-shadow: 0 0 15px rgba(37,99,235,0.5);">
+                        S</div>
+                    <span
+                        style="font-weight: 900; font-size: 20px; letter-spacing: 0.1em; color: black; text-transform: uppercase;">SAGAR</span>
+                </div>
+            </span>
+        </div>
+
+        <button type="button" class="bubble menu-btn" id="menuToggle">
+            <span class="menu-line"></span>
+            <span class="menu-line short"></span>
+        </button>
+    </nav>
+
+    <div class="bubble-menu-items" id="menuOverlay">
+        <ul class="pill-list">
+            <li class="pill-col">
+                <a href="#" class="pill-link" style="--item-rot: -8deg; --hover-bg: #3b82f6; --hover-color: #fff;">
+                    <span class="pill-label">home</span>
+                </a>
+            </li>
+            <li class="pill-col">
+                <a href="#" class="pill-link" style="--item-rot: 8deg; --hover-bg: #10b981; --hover-color: #fff;">
+                    <span class="pill-label">about</span>
+                </a>
+            </li>
+            <li class="pill-col">
+                <a href="#" class="pill-link" style="--item-rot: -8deg; --hover-bg: #8b5cf6; --hover-color: #fff;">
+                    <span class="pill-label">contact</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const bubbles = document.querySelectorAll('.pill-link');
+        const labels = document.querySelectorAll('.pill-label');
+
+        let isOpen = false;
+
+        menuToggle.addEventListener('click', () => {
+            isOpen = !isOpen;
+            menuToggle.classList.toggle('open', isOpen);
+
+            if (isOpen) {
+                menuOverlay.style.display = 'flex';
+                gsap.set(bubbles, { scale: 0, transformOrigin: '50% 50%' });
+                gsap.set(labels, { y: 24, opacity: 0 });
+
+                bubbles.forEach((bubble, i) => {
+                    const delay = i * 0.12 + (Math.random() * 0.1 - 0.05);
+                    const tl = gsap.timeline({ delay });
+                    tl.to(bubble, {
+                        scale: 1,
+                        duration: 0.5,
+                        ease: 'back.out(1.5)'
+                    });
+                    if (labels[i]) {
+                        tl.to(labels[i], {
+                            y: 0,
+                            opacity: 1,
+                            duration: 0.5,
+                            ease: 'power3.out'
+                        }, '-=0.45');
+                    }
+                });
+            } else {
+                gsap.to(labels, {
+                    y: 24,
+                    opacity: 0,
+                    duration: 0.2,
+                    ease: 'power3.in'
+                });
+                gsap.to(bubbles, {
+                    scale: 0,
+                    duration: 0.2,
+                    ease: 'power3.in',
+                    onComplete: () => {
+                        menuOverlay.style.display = 'none';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

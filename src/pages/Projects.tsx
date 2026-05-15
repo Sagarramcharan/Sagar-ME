@@ -26,7 +26,7 @@ export default function Projects() {
         </motion.div>
         
         <div className="relative z-10 pb-12 overflow-hidden w-full">
-          <CardSwap />
+          <CardSwap  />
         </div>
       </div>
     </motion.div>

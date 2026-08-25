@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'motion/react';
 
 const projects = [
@@ -6,7 +7,7 @@ const projects = [
   { id: 3, title: 'Vision-Controlled Robot', desc: 'An autonomous robotic system powered by computer vision and imitation learning for complex task execution.', color: 'from-emerald-600 to-slate-900', img: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1000&auto=format&fit=crop' },
 ];
 
-export default function CardSwap() {
+export default function CardSwap(): React.JSX.Element {
   const duplicatedProjects = [...projects, ...projects];
 
   return (

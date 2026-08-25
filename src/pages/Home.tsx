@@ -3,6 +3,7 @@ import Prism from '../components/Prism';
 import LogoLoop from '../components/LogoLoop';
 import { ArrowRight, Code2, Database, Layout, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import sagarImage from '../assets/sagar.jpg';
 
 const skills = [
   { icon: Layout, title: 'Frontend Development', desc: 'Crafting beautiful, responsive, and accessible user interfaces.' },
@@ -39,6 +40,24 @@ export default function Home() {
           Building Digital <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">Experiences</span>
         </h1>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="mb-8 relative group"
+        >
+          {/* Clean, subtle glow behind the image */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 blur-md opacity-30 group-hover:opacity-50 transition-opacity duration-300 -z-10"></div>
+          {/* Circular border with a soft backdrop blur */}
+          <div className="w-32 h-32 md:w-36 md:h-36 rounded-full border-2 border-white/20 p-1 backdrop-blur-sm shadow-2xl relative bg-slate-950/40">
+            <img 
+              src={sagarImage} 
+              alt="Sagar Satapathy" 
+              className="w-full h-full object-cover rounded-full" 
+            />
+          </div>
+        </motion.div>
         
         <p className="text-base sm:text-lg md:text-xl text-slate-300 max-w-2xl px-2 sm:px-0 mb-12 font-light">
           A passionate software engineer crafting beautiful and performant web applications with modern technologies. Let’s create something amazing together.

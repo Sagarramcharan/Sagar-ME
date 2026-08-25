@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'motion/react';
 import CardSwap from '../components/CardSwap';
 
@@ -18,7 +19,7 @@ export default function Projects() {
           className="text-center mb-16 relative z-10"
         >
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-display tracking-tight drop-shadow-2xl">
-            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">Expertise</span>
+            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">Projects</span>
           </h1>
           <p className="text-slate-400 max-w-2xl mx-auto text-lg mb-8 font-light">
             A glimpse into some of my recent interactive creations and projects.
@@ -26,9 +27,10 @@ export default function Projects() {
         </motion.div>
         
         <div className="relative z-10 pb-12 overflow-hidden w-full">
-          <CardSwap  />
+          <CardSwap />
         </div>
       </div>
     </motion.div>
   );
 }
+
